@@ -369,7 +369,16 @@ summary {
 
 <div id="load-data-subset-data" class="section level2">
 <h2>Load data &amp; subset data</h2>
-<p><a href="https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_pums_csv_2013_2017&amp;prodType=document">California Population Records Data downloaded here</a></p>
+<ul>
+<li><p>Calculating the population estimates and standard errors for the age groups 0-4, 5-9 and 10-14 in California.</p></li>
+<li><p>Data source: PUMS 2013-2017</p></li>
+<li><p><a href="https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_pums_csv_2013_2017&amp;prodType=document">DOWNLOAD California Population Records here:</a></p></li>
+</ul>
+<div id="check-calculations-against-the-pums-estimates-user-verification-file" class="section level4">
+<h4>Check calculations against the PUMS Estimates User Verification file:</h4>
+<ul>
+<li><a href="https://www2.census.gov/programs-surveys/acs/tech_docs/pums/estimates/pums_estimates_13_17.csv?#">DOWNLOAD csv:</a></li>
+</ul>
 <pre class="r"><code>library(data.table)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;data.table&#39;</code></pre>
@@ -390,6 +399,7 @@ ppl_0_14 =
   ppl %&gt;%
   dplyr::filter(AGEP &lt;=14) %&gt;%
   mutate(agegrp = ifelse(AGEP &lt;=4, &quot;0-4&quot;, ifelse(AGEP &gt; 4 &amp; AGEP &lt;= 9, &quot;5-9&quot;, &quot;10-14&quot;)))</code></pre>
+</div>
 </div>
 <div id="manual-se-calculation" class="section level2">
 <h2>Manual SE Calculation</h2>
